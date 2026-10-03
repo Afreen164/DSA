@@ -1,20 +1,19 @@
 class Solution {
     public int fib(int n) {
-        if(n==0){
-            return 0;
+        if (n <= 1) {
+            return n;
         }
-        else if (n==1){
-            return 1;
-        }
-        int first=0;
-        int second=1;
-        for(int i=1; i<=n; i++){
-            int third = first+second;
 
-            first=second;
-            second=third;
+        int prev2 = 0; // F(0)
+        int prev1 = 1; // F(1)
+        int current = 0;
+
+        for (int i = 2; i <= n; i++) {
+            current = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = current;
         }
-        return first;
-        
+
+        return current;
     }
 }
